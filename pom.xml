@@ -14,7 +14,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+<<<<<<< Updated upstream
 		<module>proff4_examples_web</module>
+=======
+
+		<module>sergei_podobnyi_web</module>
+>>>>>>> Stashed changes
 	</modules>
 
 	<properties>
