@@ -14,8 +14,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-		<module>proff4_examples_web</module>
-	</modules>
+
+        <module>artem_tistechok_web</module>
+    </modules>
 
 	<properties>
 		<junit.version>4.12</junit.version>
