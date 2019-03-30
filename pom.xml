@@ -18,7 +18,8 @@
 		<module>sergei_podobnyi_web</module>
         <module>artem_tistechok_web</module>
 		<module>dmitry_rodin_web</module>
-	</modules>
+        <module>oleksandr_krasnostup_web</module>
+    </modules>
 
 	<properties>
 		<junit.version>4.12</junit.version>
