@@ -116,7 +116,7 @@ public class MyController {
 
     @RequestMapping(value = "/user/add", method = RequestMethod.GET)
     public String userAdd() {
-        userService.save(new User());
+        userService.addToUser();
         return "";
     }
 

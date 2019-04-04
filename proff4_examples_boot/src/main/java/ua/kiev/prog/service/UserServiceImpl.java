@@ -24,6 +24,14 @@ public class UserServiceImpl {
     }
 
     @Transactional
+    public void addToUser() {
+        User user = findById(1L);
+        for (long i = 1; i < 6; i++) {
+            addToUser(getDepartmentById(i), user);
+        }
+    }
+
+    @Transactional
     public void addToUser(Long depId, Long userId) {
         addToUser(getDepartmentById(depId), findById(userId));
     }
