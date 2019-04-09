@@ -1,4 +1,4 @@
-package session3;
+package ua.kiev.prog.session3;
 
 import java.util.Arrays;
 import java.util.Objects;

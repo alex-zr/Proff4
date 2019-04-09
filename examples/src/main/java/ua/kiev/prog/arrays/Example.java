@@ -1,4 +1,4 @@
-package arrays;
+package ua.kiev.prog.arrays;
 
 import java.util.Scanner;
 

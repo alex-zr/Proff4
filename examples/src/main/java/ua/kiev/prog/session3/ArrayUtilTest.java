@@ -1,4 +1,4 @@
-package session3;
+package ua.kiev.prog.session3;
 
 public class ArrayUtilTest {
     private ArrayUtils arrayUtils;
