@@ -12,9 +12,7 @@ import java.util.Scanner;
 
 /*
 Создать ноутбук (id, model, brand, price, isUsed, date)
-    java time
-    java time example
-    java time example hibernate jpa
+Создать произодителья ноутбуков (brand)
 сохранить 5 ноутбуков
 Вычитать все ноутбуки и вывести на экран
 Задание сделать в своём модуле

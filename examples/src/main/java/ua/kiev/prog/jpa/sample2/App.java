@@ -9,15 +9,15 @@ public class App {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAExample2");
         EntityManager em = emf.createEntityManager();
         Group group = null;
+        Group group1 = new Group("Course-1");
         try {
-            Group group1 = new Group("Course-1");
             Group group2 = new Group("Course-2");
             Client client;
             long gid1, gid2;
 
             // #1
 
-            System.out.println("------------------ #1 ------------------");
+/*            System.out.println("------------------ #1 ------------------");
 
             for (int i = 0; i < 10; i++) {
                 client = new Client("Name" + i, i, String.valueOf(i));
@@ -28,47 +28,50 @@ public class App {
                 client.setGroup(null);
                 group2.addClient(client);
             }
-//            group = em.find(Group.class, 1L);
-//            System.out.println(group);
 
             try {
                 em.getTransaction().begin();
                 em.persist(group1); // save groups with clients
                 em.persist(group2);
+                for (Client group1Client : group1.getClients()) {
+                    em.persist(group1Client);
+                }
+                for (Client group2Client : group2.getClients()) {
+                    em.persist(group2Client);
+                }
                 em.getTransaction().commit();
-
-                //System.out.println("New group id #1: " + (gid1 = group1.getId()));
-                //System.out.println("New group id #2: " + (gid2 = group2.getId()));
 
             } catch (Exception ex) {
                 System.err.println(ex);
                 em.getTransaction().rollback();
                 return;
-            }
+            }*/
 
-            // #2
-/*
+//             #2
+
             System.out.println("------------------ #2 ------------------");
             em.clear();
 
+            gid1 = 5L;
+            gid2 = 6L;
             group1 = em.find(Group.class, gid1);
             if (group1 == null) {
                 System.out.println("Course #1 not found error!");
                 return;
             }
-            for (Client c : group1.getClients())
-                System.out.println("Client :" + c + " from " + c.getGroup().getName());
+//            for (Client c : group1.getClients())
+//                System.out.println("Client :" + c + " from " + c.getGroup().getName());
 
             group2 = em.find(Group.class, gid2);
             if (group2 == null) {
                 System.out.println("Course #2 not found error!");
                 return;
             }
-            for (Client c : group2.getClients())
-                System.out.println("Client :" + c + " from " + c.getGroup().getName());
+//            for (Client c : group2.getClients())
+//                System.out.println("Client :" + c + " from " + c.getGroup().getName());
 
             // #3
-            System.out.println("------------------ #3 ------------------");
+/*            System.out.println("------------------ #3 ------------------");
             em.clear();
 
             client = em.find(Client.class, 1L);
@@ -83,6 +86,7 @@ public class App {
             em.close();
             emf.close();
         }
+        System.out.println(group1.getClients());
 //        System.out.println(group);
 //        group.getClients().forEach(System.out::println);
     }

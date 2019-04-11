@@ -2,6 +2,7 @@ package ua.kiev.prog.jpa.sessionhib;
 
 import org.hibernate.HibernateException;
 import ua.kiev.prog.jpa.sample1.SimpleClient;
+import ua.kiev.prog.jpa.sample2.Group;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -28,6 +29,7 @@ public class App {
             emf = Persistence.createEntityManagerFactory("JPAExample1");
             em = emf.createEntityManager();
             SimpleClient simpleClient = em.find(SimpleClient.class, 1L);
+
             System.out.println(simpleClient);
         } catch (HibernateException ex) {
             ex.printStackTrace();
