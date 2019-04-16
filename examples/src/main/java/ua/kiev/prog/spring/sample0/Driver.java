@@ -18,4 +18,5 @@ public class Driver {
     String name;
     @Value("10")
     int experience;
+    Car car;
 }

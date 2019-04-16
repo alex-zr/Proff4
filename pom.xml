@@ -15,6 +15,7 @@
 
     <modules>
 		<module>proff4_examples_web</module>
+		<module>proff4_examples_spring</module>
 		<module>sergei_podobnyi_web</module>
         <module>artem_tistechok_web</module>
 		<module>dmitry_rodin_web</module>
