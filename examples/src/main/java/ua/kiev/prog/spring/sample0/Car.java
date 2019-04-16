@@ -1,9 +1,17 @@
 package ua.kiev.prog.spring.sample0;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Car {
+    @Value("Tesla")
     private String model;
+    @Value("2015")
     private int year;
-    //private Driver driver;
+    @Autowired
+    private Driver driver;
 
     public Car() {
     }
@@ -12,12 +20,12 @@ public class Car {
         this.model = model;
         this.year = year;
     }
-/*
+
     public Car(String model, int year, Driver driver) {
         this.model = model;
         this.year = year;
         this.driver = driver;
-    }*/
+    }
 
     public String getModel() {
         return model;
@@ -35,20 +43,20 @@ public class Car {
         this.year = year;
     }
 
-/*    public Driver getDriver() {
+    public Driver getDriver() {
         return driver;
-    }*/
+    }
 
-/*    public void setDriver(Driver driver) {
+    public void setDriver(Driver driver) {
         this.driver = driver;
-    }*/
+    }
 
     @Override
     public String toString() {
         return "Car{" +
                 "model='" + model + '\'' +
                 ", year=" + year +
-               // ", driver=" + driver +
+                ", driver=" + driver.getName() +
                 '}';
     }
 }
