@@ -65,7 +65,7 @@ public class MyController {
     @RequestMapping("/delete/{photo_id}")
     public String onDelete(@PathVariable("photo_id") long id) {
         Photo photo = photoRepository.findById(id)
-                .orElseThrow(PhotoNotFoundException::new);
+                .orElseThrow(() -> new PhotoNotFoundException(String.valueOf(id)));
         photoRepository.delete(photo);
 
         return "index";
@@ -78,7 +78,7 @@ public class MyController {
 
     private ResponseEntity<byte[]> photoById(long id) {
         byte[] bytes = photoRepository.findById(id)
-                .orElseThrow(PhotoNotFoundException::new)
+                .orElseThrow(() -> new PhotoNotFoundException(String.valueOf(id)))
                 .getImage();
 
         HttpHeaders headers = new HttpHeaders();
