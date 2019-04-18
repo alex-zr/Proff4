@@ -16,6 +16,7 @@
     <modules>
 		<module>proff4_examples_web</module>
 		<module>proff4_examples_spring</module>
+		<module>proff4_examples_data</module>
 		<module>sergei_podobnyi_web</module>
         <module>artem_tistechok_web</module>
 		<module>dmitry_rodin_web</module>
@@ -29,6 +30,8 @@
 		<jdk.version>1.8</jdk.version>
 		<spring.version>5.1.6.RELEASE</spring.version>
 		<spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+		<spring.data>2.1.6.RELEASE</spring.data>
+		<hb.manager>4.2.5.Final</hb.manager>
 		<log4j.version>1.2.17</log4j.version>
 		<slf4j.version>1.7.2</slf4j.version>
 		<mysql.connector.version>5.1.46</mysql.connector.version>
@@ -126,6 +129,11 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring.data}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.gson</groupId>
