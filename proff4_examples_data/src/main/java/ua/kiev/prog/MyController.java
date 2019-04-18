@@ -29,7 +29,6 @@ import java.util.zip.ZipOutputStream;
 @AllArgsConstructor
 public class MyController {
     private PhotoRepository photoRepository;
-    //private Map<Long, byte[]> photos = new ConcurrentHashMap<>();
 
     @RequestMapping("/")
     public String onIndex() {
