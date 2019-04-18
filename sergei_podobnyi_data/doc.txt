@@ -1,0 +1,104 @@
+We will also implement a simple search function that has two requirements:
+
+It must return todo entries whose title or description contains the given search term.
+The search must be case insensitive.
+
+Creating Query Methods
+The query generation from the method name is a query generation strategy where the invoked query is derived from the name of the query method.
+
+We can create query methods that use this strategy by following these rules:
+
+The name of our query method must start with one of the following prefixes: find…By, read…By, query…By, count…By, and get…By.
+If we want to limit the number of returned query results, we can add the First or the Top keyword before the first By word. If we want to get more than one result, we have to append the optional numeric value to the First and the Top keywords. For example, findTopBy, findTop1By, findFirstBy, and findFirst1By all return the first entity that matches with the specified search criteria.
+If we want to select unique results, we have to add the Distinct keyword before the first By word. For example, findTitleDistinctBy or findDistinctTitleBy means that we want to select all unique titles that are found from the database.
+We must add the search criteria of our query method after the first By word. We can specify the search criteria by combining property expressions with the supported keywords.
+If our query method specifies x search conditions, we must add x method parameters to it. In other words, the number of method parameters must be equal than the number of search conditions. Also, the method parameters must be given in the same order than the search conditions.
+We must set the return type of the query method by following the rules that were described in the previous part of this tutorial.
+
+The following examples demonstrate how we can create simple query methods by using the query generation from the method name strategy:
+Example 1: If we want to create a query method that returns the todo entry whose id is given as a method parameter, we have to add one of the following query methods to our repository interface:
+
+import org.springframework.data.repository.Repository;
+
+import java.util.Optional;
+
+interface TodoRepository extends Repository<Todo, Long> {
+
+    /**
+     * Returns the found todo entry by using its id as search
+     * criteria. If no todo entry is found, this method
+     * returns null.
+     */
+    public Todo findById(Long id);
+
+    /**
+     * Returns an Optional which contains the found todo
+     * entry by using its id as search criteria. If no to entry
+     * is found, this method returns an empty Optional.
+     */
+    public Optional<Todo> findById(Long id);
+}
+Example 2: If we want to create a query method that returns todo entries whose title or description is given as a method parameter, we have to add the following query method to our repository interface:
+
+import org.springframework.data.repository.Repository;
+
+import java.util.List;
+
+interface TodoRepository extends Repository<Todo, Long> {
+
+    /**
+     * Returns the found todo entry whose title or description is given
+     * as a method parameter. If no todo entry is found, this method
+     * returns an empty list.
+     */
+    public List<Todo> findByTitleOrDescription(String title, String description);
+}
+Example 3: If we want to create a query method that returns the number of todo entries whose title is given as a method parameter, we have to add the following query method to our repository interface:
+
+import org.springframework.data.repository.Repository;
+
+interface TodoRepository extends Repository<Todo, Long> {
+
+    /**
+     * Returns the number of todo entry whose title is given
+     * as a method parameter.
+     */
+    public long countByTitle(String title);
+}
+Example 4: If we want to return the distinct todo entries whose title is given as a method parameter, we have to add the following query method to our repository interface:
+
+import org.springframework.data.repository.Repository;
+
+import java.util.List;
+
+interface TodoRepository extends Repository<Todo, Long> {
+
+    /**
+     * Returns the distinct todo entries whose title is given
+     * as a method parameter. If no todo entries is found, this
+     * method returns an empty list.
+     */
+    public List<Todo> findDistinctByTitle(String title);
+}
+Example 5: If we want to to return the first 3 todo entries whose title is given as a method parameter, we have to add one of the following query methods to our repository interface:
+
+import org.springframework.data.repository.Repository;
+
+import java.util.List;
+
+interface TodoRepository extends Repository<Todo, Long> {
+
+    /**
+     * Returns the first three todo entries whose title is given
+     * as a method parameter. If no todo entries is found, this
+     * method returns an empty list.
+     */
+    public List<Todo> findFirst3ByTitleOrderByTitleAsc(String title);
+
+    /**
+     * Returns the first three todo entries whose title is given
+     * as a method parameter. If no todo entries is found, this
+     * method returns an empty list.
+     */
+    public List<Todo> findTop3ByTitleOrderByTitleAsc(String title);
+}

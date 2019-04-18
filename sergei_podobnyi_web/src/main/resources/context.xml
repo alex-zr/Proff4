@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="driver1" class="ua.kiev.prog.spring.sample0.Driver">
+        <property name="name" value="Poroshenko"/>
+        <property name="experience" value="20"/>
+        <property name="car" ref="car1"/>
+    </bean>
+
+    <bean id="driver2" class="ua.kiev.prog.spring.sample0.Driver">
+        <constructor-arg value="Zelensky"/>
+        <constructor-arg value="10"/>
+        <constructor-arg ref="car1"/>
+    </bean>
+
+    <bean id="car1" class="ua.kiev.prog.spring.sample0.Car">
+        <property name="model" value="Ferrary"/>
+        <property name="year" value="2010"/>
+        <property name="driver" ref="driver1"/>
+    </bean>
+
+    <bean id="car2" class="ua.kiev.prog.spring.sample0.Car">
+        <constructor-arg value="Tesla"/>
+        <constructor-arg value="2015"/>
+        <constructor-arg ref="driver2"/>
+    </bean>
+
+</beans>
