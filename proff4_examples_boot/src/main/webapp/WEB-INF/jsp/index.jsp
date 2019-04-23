@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul id="groupList" class="nav navbar-nav">
                     <li>
-                        <button type="button" id="add_contact" class="btn btn-default navbar-btn">Add Contact</button>
+                        <button type="button" id="add_contact" class="btn btn-danger navbar-btn">Add Contact</button>
                     </li>
                     <li>
                         <button type="button" id="add_group" class="btn btn-default navbar-btn">Add Group</button>

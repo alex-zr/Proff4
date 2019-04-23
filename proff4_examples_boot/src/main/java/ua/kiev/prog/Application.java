@@ -10,6 +10,10 @@ import ua.kiev.prog.domain.Contact;
 import ua.kiev.prog.domain.Group;
 import ua.kiev.prog.service.ContactServiceImpl;
 
+/*
+    1. Добавить страницу редактирования контакта
+    2. Добавить аутентификацию пользователя для входа в приложение
+ */
 @SpringBootApplication
 @AllArgsConstructor
 public class Application implements ApplicationRunner {
