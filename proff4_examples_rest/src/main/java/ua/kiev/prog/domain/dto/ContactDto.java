@@ -1,13 +1,17 @@
 package ua.kiev.prog.domain.dto;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
 @Builder
-@FieldDefaults(makeFinal=true, level= AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(makeFinal=false, level= AccessLevel.PRIVATE)
 public class ContactDto {
     long id;
     String groupName;

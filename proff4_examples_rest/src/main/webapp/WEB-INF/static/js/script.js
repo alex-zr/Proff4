@@ -1,20 +1,21 @@
 var variable = 10;
 variable = {};
 document.write('Hello DOM');
-console.log(variable);
+console.log('log');
 
 var f = function(vari) {
     console.log(r);
     document.write('Hello' + vari);
-    var r = 9;
+    var r === 9;
 };
 
-f = function f (){
+f = function f (f){
     function b() {
 
     }
 }();
-f(f);
+f();
+
 
 for (var i=0; i<10; i++) {
 

@@ -6,6 +6,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ua.kiev.prog.domain.Contact;
@@ -24,6 +26,11 @@ public class ContactRestController {
     private ContactService contactService;
     private ContactConverter contactConverter;
     private RestTemplate restTemplate;
+
+    @GetMapping("/contact/{id}")
+    public ContactDto getContacts(@PathVariable(value = "id") long contactId) {
+        return new ContactDto();
+    }
 
     @GetMapping("/contacts")
     public List<ContactDto> getContacts() {
