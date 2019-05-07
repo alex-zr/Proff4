@@ -1,0 +1,199 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: al1
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+          - tableExists:
+              tableName: users
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: al1
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+          - tableExists:
+              tableName: groups
+      changes:
+        - createTable:
+            tableName: groups
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: al1
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+          - tableExists:
+              tableName: contacts
+      changes:
+        - createTable:
+            tableName: contacts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: group_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 4
+      author: al1
+      changes:
+        - insert:
+            tableName: groups
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Test
+        - insert:
+            tableName: contacts
+            columns:
+              - column:
+                  name: name
+                  value: Name1
+              - column:
+                  name: surname
+                  value: Surname1
+              - column:
+                  name: phone
+                  value: 1234567
+              - column:
+                  name: email
+                  value: user1@test.com
+              - column:
+                  name: group_id
+                  value: 1
+        - insert:
+            tableName: contacts
+            columns:
+              - column:
+                  name: name
+                  value: Name2
+              - column:
+                  name: surname
+                  value: Surname2
+              - column:
+                  name: phone
+                  value: 1234567
+              - column:
+                  name: email
+                  value: user2@test.com
+              - column:
+                  name: group_id
+                  value: 1
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: login
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$10$r.5J2XUUlUP.5jTd7mEnwu12YTPRg5WPQyYmVxUjVHlECWCw7jM2S
+              - column:
+                  name: role
+                  value: ADMIN
+              - column:
+                  name: email
+                  value: admin@prog.com.ua
+              - column:
+                  name: phone
+                  value: 1234567
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: login
+                  value: user
+              - column:
+                  name: password
+                  value: $2a$10$upMAmRAn7lsbW5GBjFvjC.lC5RVdl9ubF9BHWOsApksIlp//8VgkS
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: email
+                  value: user@prog.com.ua
+              - column:
+                  name: phone
+                  value: 7654321
+
