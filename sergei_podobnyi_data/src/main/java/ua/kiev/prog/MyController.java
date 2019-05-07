@@ -16,14 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.kiev.prog.domain.Photo;
 import ua.kiev.prog.repo.PhotoRepository;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 @AllArgsConstructor
@@ -55,6 +51,17 @@ public class MyController {
     @RequestMapping("/photo/{photo_id}")
     public ResponseEntity<byte[]> onPhoto(@PathVariable("photo_id") long id) {
         return photoById(id);
+    }
+
+    // получить все айди
+    @RequestMapping("/showIds")
+    public String onPhoto(Model model) {
+        List<Long> ids = StreamSupport.stream(photoRepository.findAll().spliterator(), false)
+                .map(Photo::getId)
+                .collect(Collectors.toList());
+        model.addAttribute("photoIds", ids);
+
+        return "showIds";
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.POST)

@@ -14,6 +14,10 @@
         Photo: <input type="file" name="photo">
         <input type="submit"/>
     </form>
+
+    <form action="/showIds" method="GET">
+        Show photo ids: <input type="submit" value="show"/>
+    </form>
 </div>
 </body>
 </html>
