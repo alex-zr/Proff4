@@ -26,7 +26,7 @@ public class MyController {
     static final int ITEMS_PER_PAGE = 6;
 
     private ContactService contactService;
-    private ValidationClient greetingClient;
+    private ValidationClient validationClient;
 
     @RequestMapping("/")
     public String index(Model model, @RequestParam(required = false, defaultValue = "0") Integer page) {
@@ -114,7 +114,7 @@ public class MyController {
 
     @RequestMapping(value = "/contact/validate", method = RequestMethod.GET)
     public String validateContact(@RequestParam String phoneNumber) {
-        return greetingClient.validate(phoneNumber);
+        return validationClient.validate(phoneNumber);
     }
 
 

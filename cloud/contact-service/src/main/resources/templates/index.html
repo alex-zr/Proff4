@@ -33,7 +33,7 @@
                            aria-expanded="false">Groups <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/">Default</a></li>
-                            <li th:each="group : ${groups}"><a href="/group/${group.id}">${group.name}</a></li>
+                            <li th:each="group : ${groups}"><a href="/group/${group.id}" th:utext="${group.name}"></a></li>
 <!--                            <c:forEach items="${groups}" var="group">
                                 <li><a href="/group/${group.id}">${group.name}</a></li>
                             </c:forEach>-->
