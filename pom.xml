@@ -26,6 +26,7 @@
 		<module>dmitry_rodin_web</module>
         <module>oleksandr_krasnostup_web</module>
 		<module>examples</module>
+		<module>cloud</module>
 	</modules>
 
 	<properties>
@@ -33,8 +34,8 @@
 		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>5.1.6.RELEASE</spring.version>
-		<spring.boot.version>2.1.0.RELEASE</spring.boot.version>
-		<spring.data>2.1.6.RELEASE</spring.data>
+		<spring.boot.version>2.1.4.RELEASE</spring.boot.version>
+		<spring.data>2.1.8.RELEASE</spring.data>
 		<hb.manager>4.2.5.Final</hb.manager>
 		<log4j.version>1.2.17</log4j.version>
 		<slf4j.version>1.7.2</slf4j.version>
