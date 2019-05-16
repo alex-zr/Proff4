@@ -1,0 +1,35 @@
+# docker-compose up -d
+version: '3'
+
+services:
+
+  eureka:
+    image: eureka-server:latest
+    ports:
+      - 9000:9000
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - 3307:3306
+
+  contact-validator:
+    image: contact-validator:latest
+    ports:
+      - 8084:8084
+
+  contact-service:
+    image: contact-service:latest
+    hostname: localhost
+    #    networks:
+    #      - spring-cloud-network
+    ports:
+      - 8083:8083
+
+#  networks:
+#    spring-cloud-network:
+#      driver: bridge

@@ -1,0 +1,115 @@
+Образы и контейнеры
+
+Образ - это файл с содержимым всего что должно быть в контейнере
+Контейнер - это виртуальная машина, запущенная на основе образа
+
+Рассмотрим пример разворачивания контейнера на базе MySql
+
+Пулим образ
+Прежде всего, надо спулить правильный образ. Мне нужна последняя версия MySQL. Если нужна какая-то конкретная версия, то надо надо заменить тег latest, на нужную версию (5.5, 5.6, 5.7, 8.0).
+Вводим команду: docker pull mysql/mysql-server:5.7
+
+Разворачиваем контейнер
+Поскольку у вас есть образ MySQL на машине, можно разворачивать контейнер.
+Делается это командой: docker run --name=mysql01 -d mysql/mysql-server:5.7
+В этом примере мы называем контейнер mysql01, вы можете назвать так, как вам хочется.
+
+docker ps , чтобы убедиться, что контейнер с MySQL запущен.
+
+Пароль для MySQL
+После установки MySQL на Linux вам будет предложено создать админский пароль базы данных. Но мы уже развернули docker-контейнер, в котором уже установлена и запущена БД. Но какой от нее смысл без пароля? К счастью, во время развертывания был установлен случайный пароль.
+Чтобы увидеть пароль, воспользуйтесь командой docker logs mysql01
+
+Логин на сервер MySQL
+Теперь надо зайти на контейнеризованный сервер.
+Сделать это можно с помощью команды docker exec -it mysql01 mysql -uroot -p. Вас спросят пароль, используйте пароль полученный в предыдущем шаге.
+Уже на сервере можно поменять пароль командой: ALTER USER ‘root’@’localhost’ IDENTIFIED BY 'root';
+
+Теперь команду exit , чтобы выйти из интерпретатора MySQL. И можно использовать базу данных MySQL в контейнере.
+
+Посмотреть все образы
+docker images
+
+Удалить образ
+docker rmi mysql/mysql-server
+
+Поиск образов в главном репозитарии
+docker search eureka
+
+Скачивание образов
+docker pull ubuntu:14.04
+
+Запускает контейнер с именем «debian_container1», далее нужно установить pat rule таким образом, что если какой-либо запрос приходит к 9000 порту на хосте docker, то он будет перенаправлен на контейнер debian на 80-порту. Мы получаем консоль сразу после выполнения команды
+docker run -it -p 9000:80 --name=debian_container1 debian
+
+Получение списка контейнеров
+docker ps -a
+
+Остановка контейнера
+docker stop db_container1
+
+Уничтожить процесс контейнера
+docker kill db_container1
+
+Удалить контейнер
+docker rm db_container1
+
+Подключиться к контейнеру
+docker exec -it <container name> /bin/bash
+docker exec -it contact-service:latest /bin/bash
+
+Посмотреть отчёт запуска остановленного контейнера
+docker logs  [ContainerID]
+
+
+Containerize the Spring Boot application
+
+Dockerfile
+This file is needed to create a docker image;
+
+FROM java:8
+VOLUME /tmp
+ADD gs-spring-boot-docker-0.1.0.jar app.jar
+RUN bash -c 'touch /app.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+
+
+Build a Docker Image with Maven
+The maven supports the docker plugin in order to build the docker image. The following three configurations are required in building the docker image either with maven or gradle.
+
+The image name (or tag)
+The directory in which to find the Dockerfile
+The resources (files) to copy from the target directory to the docker build (alongside the Dockerfile) - we only need the jar file in this example
+The maven pom.xml should contain the following configuration;
+
+pom.xml
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.2.3</version>
+            <configuration>
+                <imageName>${project.artifactId}</imageName>
+                <dockerDirectory>src/main/docker</dockerDirectory>
+                <resources>
+                    <resource>
+                        <targetPath>/</targetPath>
+                        <directory>${project.build.directory}</directory>
+                        <include>${project.build.finalName}.jar</include>
+                    </resource>
+                </resources>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+Using the maven build the docker image
+
+$ mvn package docker:build
+
+Для запуска проекта нужно
+
+1. собрать все модули cloud
+2. Создать 4 контейнера
+3. Запустить контейнеры через docker-compose up -d

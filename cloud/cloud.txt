@@ -1,0 +1,12 @@
+CAP теорема
+Микросервисная архитектура
+Spring cloud
+1. Config Server
+2. Eureka server
+3. Contact service
+4. Contact validator service
+5. Zuul Proxy
+
+Docker
+JWT - аутентификация без сохранения состояния
+Mettred and Grafana
