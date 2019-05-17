@@ -5,7 +5,7 @@ FROM java:8
 # Add a volume pointing to /tmp
 VOLUME /tmp
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8083
 WORKDIR /tmp
 
 # The application's jar file

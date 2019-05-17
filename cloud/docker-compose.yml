@@ -14,22 +14,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydb
-    ports:
-      - 3307:3306
+#    ports:
+#      - 3307:3306
 
   contact-validator:
     image: contact-validator:latest
     ports:
       - 8084:8084
+    links:
+      - mysql:dbserver
+      - eureka:eureka
 
   contact-service:
     image: contact-service:latest
-    hostname: localhost
-    #    networks:
-    #      - spring-cloud-network
     ports:
       - 8083:8083
-
-#  networks:
-#    spring-cloud-network:
-#      driver: bridge
+    links:
+      - mysql:dbserver
+      - eureka:eureka
