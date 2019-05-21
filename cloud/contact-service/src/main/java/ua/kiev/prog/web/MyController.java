@@ -84,8 +84,9 @@ public class MyController {
 
     @RequestMapping(value = "/contact/delete", method = RequestMethod.POST)
     public ResponseEntity<Void> delete(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
-        if (toDelete != null && toDelete.length > 0)
+        if (toDelete != null && toDelete.length > 0) {
             contactService.deleteContacts(toDelete);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
