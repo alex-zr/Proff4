@@ -12,7 +12,7 @@ public class TestBean implements InitializingBean {
     // 2. Запускаются все BeanFactoryPostProcessor классы объявленные в контексте и настраивают BeanDefinitions
     // 3. BeanDefinitions передаются в BeanFactory и она создаёт бины
     // 4. для каждого бина, BeanFactory запускает все BeanPostProcessors
-    @InjectRandom
+    @InjectRandom(min = 100, max = 200)
     private int value;
 
     public TestBean() {

@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(MyController.class)
 public class MyControllerTest {
 
 

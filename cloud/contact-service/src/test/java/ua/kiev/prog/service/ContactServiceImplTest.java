@@ -8,7 +8,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import ua.kiev.prog.dao.ContactRepository;
 import ua.kiev.prog.dao.GroupRepository;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContactServiceImplTest {
@@ -22,6 +24,7 @@ public class ContactServiceImplTest {
 
     @Test
     public void testDeleteContacts() {
+        when(contactRepository.countByGroup(any())).thenReturn(5L);
         contactService.deleteContacts(new long[]{1,2});
         verify(contactRepository).deleteById(1L);
         verify(contactRepository).deleteById(2L);
