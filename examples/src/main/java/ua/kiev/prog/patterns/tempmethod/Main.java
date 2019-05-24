@@ -2,10 +2,10 @@ package ua.kiev.prog.patterns.tempmethod;
 
 public class Main {
     public static void main(String[] args) {
-        Transaction trans = new Transaction(new OnlineTransaction());
-        trans.perform();
+        TransactionMethod method = new OnlineTransaction();
+        method.perform();
 
-        trans.setMethod(new AtmTransaction());
-        trans.perform();
+        method = new AtmTransaction();
+        method.perform();
     }
 }
